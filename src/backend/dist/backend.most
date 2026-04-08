@@ -1,0 +1,54 @@
+// Version: 1.0.0
+type Category__631548020 = {#Food; #Recreational; #Utility};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Transaction__822992244 =
+  {
+    amount : Float;
+    category : Category__631548020;
+    description : Text;
+    id : Nat;
+    timestamp : Int
+  };
+type UserData__739167906 =
+  {
+    var currentWeekStart : Int;
+    var nextTxId : Nat;
+    var nextWeekId : Nat;
+    var spendingLimit : ?Float;
+    transactions : List__415060402<Transaction__822992244>;
+    weekHistory : List__415060402<WeekRecord__476573299>;
+    weekTxHistory :
+      List__415060402<(Nat, List__415060402<Transaction__822992244>)>
+  };
+type WeekRecord__476573299 =
+  {
+    endDate : Int;
+    foodTotal : Float;
+    grandTotal : Float;
+    recTotal : Float;
+    startDate : Int;
+    utilTotal : Float;
+    weekId : Nat
+  };
+actor {
+  stable userData :
+    {
+      var root : Node__46230540<Principal, UserData__739167906>;
+      var size : Nat__490723111
+    }
+};

@@ -1,0 +1,21 @@
+{
+  "overview": "WeeklySpend Tracker is a minimal, mobile-first budgeting app for effortless daily spending tracking. Set a weekly budget, log transactions by category, and get a warning when you go over your limit. Export your history as CSV anytime.",
+  "features": [
+    "Weekly spending limit with overspending warning",
+    "Log transactions by category: Food, Recreational, Utility",
+    "Edit and delete current-week transactions",
+    "Automatic weekly reset every Sunday",
+    "History tab with past week summaries",
+    "CSV export — one row per transaction",
+    "Dark and light mode support"
+  ],
+  "category": "productivity",
+  "tags": [
+    "budgeting",
+    "spending-tracker",
+    "personal-finance",
+    "weekly-budget",
+    "minimal"
+  ],
+  "last_updated": "2026-04-08T00:24:14.880Z"
+}

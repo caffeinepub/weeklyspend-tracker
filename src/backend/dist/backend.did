@@ -1,0 +1,56 @@
+type WeekSummary = 
+ record {
+   endDate: int;
+   foodTotal: float64;
+   grandTotal: float64;
+   recTotal: float64;
+   startDate: int;
+   utilTotal: float64;
+   weekId: nat;
+ };
+type WeekRecord = 
+ record {
+   endDate: int;
+   foodTotal: float64;
+   grandTotal: float64;
+   recTotal: float64;
+   startDate: int;
+   utilTotal: float64;
+   weekId: nat;
+ };
+type Transaction = 
+ record {
+   amount: float64;
+   category: Category;
+   description: text;
+   id: nat;
+   timestamp: int;
+ };
+type Timestamp = int;
+type Category = 
+ variant {
+   Food;
+   Recreational;
+   Utility;
+ };
+service : {
+  addTransaction: (amount: float64, description: text, category: Category) ->
+   (Transaction);
+  checkAndResetWeek: () -> (bool);
+  deleteTransaction: (id: nat) -> (bool);
+  getCurrentWeekSummary: () -> (WeekSummary) query;
+  getCurrentWeekTransactions: () -> (vec Transaction) query;
+  getExportData: () -> (vec record {
+                              Timestamp;
+                              float64;
+                              Category;
+                              text;
+                            }) query;
+  getSpendingLimit: () -> (opt float64) query;
+  getTodayTransactions: () -> (vec Transaction) query;
+  getWeekHistory: () -> (vec WeekRecord) query;
+  getWeekTransactions: (weekId: nat) -> (vec Transaction) query;
+  setSpendingLimit: (limit: float64) -> ();
+  updateTransaction: (id: nat, amount: float64, description: text, category:
+   Category) -> (opt Transaction);
+}
